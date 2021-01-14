@@ -1,0 +1,32 @@
+ssh scompile
+
+[mecr8410@shas0136 ~]$ ml impi
+[mecr8410@shas0136 ~]$ ml python
+[mecr8410@shas0136 ~]$ ml python/3.6.5
+[mecr8410@shas0136 ~]$ module load intel
+
+[mecr8410@shas0136 Chaos]$ sinteractive --time=00:10:00 --ntasks=4 --nodes=1
+
+scp -r mecr8410@login.rc.colorado.edu:/home/mecr8410/Chaos/bifurcation ~/Desktop
+
+
+scp mecr8410@login.rc.colorado.edu:/home/mecr8410/Chaos/picture.png ~/Desktop
+
+
+
+ssh-Xl mecr8410 login.rc.colorado.edu
+
+ssh -X scompile
+
+24 tasks per node
+
+squeue -u mecr8410
+watch squeue -u mecr8410
+
+
+
+to make a movie:
+ffmpeg -framerate 2 -i bifurcation%01d.png -c:v libx264 -r 30 -pix_fmt yuv420p out.mp4
+
+ffmpeg -i out.mp4 -pix_fmt rgb24 -loop 0 out.gif
+
